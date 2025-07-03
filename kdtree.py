@@ -74,7 +74,7 @@ class KDTree:
 
         # Use a max heap to keep track of the k closest points
         # We negate distances because heapq is a min heap
-        best_matches = []
+        best_matches: List[Tuple[float, str, float]] = []
 
         def search_recursive(node: Optional[KDNode], depth: int = 0):
             if node is None:

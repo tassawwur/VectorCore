@@ -21,7 +21,7 @@ class VectorCore:
     - STATS: Get database statistics
     """
 
-    def __init__(self, dimension: int = None):
+    def __init__(self, dimension: Optional[int] = None):
         self.dimension = dimension
         self.kdtree: Optional[KDTree] = None
         self.vectors: Dict[str, np.ndarray] = {}  # Backup storage for exact lookups
@@ -55,7 +55,8 @@ class VectorCore:
                     self._rebuild_tree()
                 else:
                     self.vectors[doc_id] = vector_array
-                    self.kdtree.insert(vector_array, doc_id)
+                    if self.kdtree is not None:
+                        self.kdtree.insert(vector_array, doc_id)
 
                 return True
 
