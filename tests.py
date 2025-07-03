@@ -12,10 +12,12 @@ import time
 import tempfile
 import os
 import numpy as np
+
 # from unittest.mock import patch, MagicMock  # Reserved for future use
 
 from kdtree import KDTree
 from vectorcore import VectorCore
+
 # from server import VectorCoreServer  # Reserved for future use
 
 
@@ -223,7 +225,9 @@ class TestPerformance(unittest.TestCase):
 
         start_time = time.time()
         for _ in range(num_queries):
-            self.vectorcore.query_similar(query_vector, k=10)  # Results not used for timing
+            self.vectorcore.query_similar(
+                query_vector, k=10
+            )  # Results not used for timing
 
         query_time = time.time() - start_time
         avg_query_time = query_time / num_queries
