@@ -2,7 +2,7 @@
 """
 VectorCore - High-Performance Vector Database
 
-A specialized in-memory database for storing and searching through millions of 
+A specialized in-memory database for storing and searching through millions of
 AI-generated vectors with extreme speed using k-d tree indexing.
 
 Usage:
@@ -31,40 +31,36 @@ def main():
     parser = argparse.ArgumentParser(
         description="VectorCore - High-Performance Vector Database",
         formatter_class=argparse.RawDescriptionHelpFormatter,
-        epilog=__doc__
+        epilog=__doc__,
     )
-    
+
     parser.add_argument(
-        '--host', 
-        default='localhost',
-        help='Host to bind the server to (default: localhost)'
+        "--host",
+        default="localhost",
+        help="Host to bind the server to (default: localhost)",
     )
-    
+
     parser.add_argument(
-        '--port',
+        "--port",
         type=int,
         default=8888,
-        help='Port to bind the server to (default: 8888)'
+        help="Port to bind the server to (default: 8888)",
     )
-    
-    parser.add_argument(
-        '--version',
-        action='version',
-        version='VectorCore 1.0.0'
-    )
-    
+
+    parser.add_argument("--version", action="version", version="VectorCore 1.0.0")
+
     args = parser.parse_args()
-    
+
     print("=" * 60)
     print("🎯 VectorCore - High-Performance Vector Database")
     print("=" * 60)
     print(f"🏠 Host: {args.host}")
     print(f"🚪 Port: {args.port}")
     print("=" * 60)
-    
+
     # Create and start the server
     server = VectorCoreServer(host=args.host, port=args.port)
-    
+
     try:
         server.start()
     except KeyboardInterrupt:
@@ -78,4 +74,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main() 
+    main()
